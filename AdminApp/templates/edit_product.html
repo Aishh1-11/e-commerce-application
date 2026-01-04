@@ -1,0 +1,91 @@
+{% extends 'dashboard.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="card-body ">
+                  <h4 class="card-title"  style="font-size: 32px;">PRODUCT</h4>
+                  <p class="card-description">
+                  Edit the details of product
+                  </p>
+
+                  <form class="forms-sample" method="post" action="{% url 'update_product' product.id %}" enctype="multipart/form-data">
+                      {% csrf_token %}
+                    <div class="form-group">
+                      <label for="category">Category </label>
+<!--                      <input type="text" class="form-control" id="exampleInputName1"  name="name">-->
+                        <select class="form-control" id="category"  name="category">
+                            {% for c in categories %}
+
+                            <option value="{{c.Name}}" {% if product.CategoryName == c.Name %} selected {% endif %}>{{c.Name}}</option>
+
+
+
+
+                            {% endfor %}
+                        </select>
+
+
+                    </div>
+
+
+                      <div class="form-group">
+                      <label for="product">Product Name</label>
+                      <input type="text" class="form-control" id="product" value="{{product.Product}}" name="product">
+                    </div>
+
+                      <div class="form-group">
+                      <label for="price">Price</label>
+                      <input type="number" class="form-control" id="price" value="{{product.Price}}" name="price">
+                    </div>
+
+
+                      <div class="form-group">
+                      <label for="brand">Brand Name</label>
+                      <input type="text" class="form-control" id="brand" value="{{product.Brand}}" name="brand">
+                    </div>
+
+
+                      <div class="form-group">
+                      <label for="short-description">Short Description</label>
+                      <textarea class="form-control" id="short-description" rows="3" name="short-description">{{product.Short_description}}</textarea>
+                    </div>
+
+                      <div class="form-group">
+                      <label for="detailed-description">Detailed Description</label>
+                      <textarea class="form-control" id="detailed-description" rows="10" name="detailed-description">{{product.Detailed_description}}</textarea>
+                    </div>
+
+
+                   <div class="d-flex justify-content-between">
+                        <div class="form-group ">
+                         <label >Image1</label>  <img src="{{ product.Image1.url }}" width="100",height="100">
+                <input type="file" name="image1" class="form-control">
+
+                    </div>
+                      <div class="form-group">
+                         <label >Image2</label>  <img src="{{ product.Image2.url }}" width="100",height="100">
+
+                <input type="file" name="image2" class="form-control">
+
+                    </div>
+                      <div class="form-group">
+                         <label >Image3</label> <img src="{{ product.Image3.url }}" width="100",height="100">
+                <input type="file" name="image3" class="form-control">
+
+                    </div>
+                   </div>
+
+
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
+                  </form>
+                </div>
+</body>
+</html>
+{% endblock %}
