@@ -65,7 +65,7 @@
                         <div class="navbar-nav mx-auto">
                             <a href="{% url 'home' %}" class="nav-item nav-link active">Home</a>
                             <a href="{% url 'products' %}" class="nav-item nav-link">Products</a>
-                            <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a>
+
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Categories</a>
                                 <div class="dropdown-menu m-0 bg-secondary rounded-0">
@@ -75,14 +75,14 @@
 
                                 </div>
                             </div>
-                            <a href="{#}" class="nav-item nav-link">Contact</a>
+                            <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a>
                         </div>
                         <div class="d-flex m-3 me-0">
-                            <button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search text-primary"></i></button>
-                            <a href="#" class="position-relative me-4 my-auto">
-                                <i class="fa fa-shopping-bag fa-2x"></i>
-                                <span class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1" style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
-                            </a>
+<!--                            <button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search text-primary"></i></button>-->
+<!--                            <a href="#" class="position-relative me-4 my-auto">-->
+<!--                                <i class="fa fa-shopping-bag fa-2x"></i>-->
+<!--                                <span class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1" style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>-->
+<!--                            </a>-->
                            <div class="nav-item dropdown my-auto">
                              <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                                  <i class="fas fa-user fa-2x"></i>
@@ -91,9 +91,9 @@
                                <div class="dropdown-menu dropdown-menu-end">
                                     {% if request.session.User_name %}
                                   <a href="#" class="dropdown-item">{{request.session.User_name}}</a>
-                                   <a href="#" class="dropdown-item">Logout</a>
+                                   <a href="{% url 'user_logout' %}" class="dropdown-item">Logout</a>
                                    {% else %}
-                                   <a href="{% url 'user_registration' %} " class="dropdown-item">Register</a>
+                                   <a href="{% url 'user_registration' %} " class="dropdown-item">Register/login</a>
 
                                    {% endif %}
 
@@ -112,22 +112,22 @@
 
 
         <!-- Modal Search Start -->
-        <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-fullscreen">
-                <div class="modal-content rounded-0">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Search by keyword</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body d-flex align-items-center">
-                        <div class="input-group w-75 mx-auto d-flex">
-                            <input type="search" class="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1">
-                            <span id="search-icon-1" class="input-group-text p-3"><i class="fa fa-search"></i></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!--        <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+<!--            <div class="modal-dialog modal-fullscreen">-->
+<!--                <div class="modal-content rounded-0">-->
+<!--                    <div class="modal-header">-->
+<!--                        <h5 class="modal-title" id="exampleModalLabel">Search by keyword</h5>-->
+<!--                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--                    </div>-->
+<!--                    <div class="modal-body d-flex align-items-center">-->
+<!--                        <div class="input-group w-75 mx-auto d-flex">-->
+<!--                            <input type="search" class="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1">-->
+<!--                            <span id="search-icon-1" class="input-group-text p-3"><i class="fa fa-search"></i></span>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
         <!-- Modal Search End -->
 
 
@@ -225,22 +225,11 @@
                         <div class="py-4">
                             <h1 class="display-3 text-white">Categories</h1>
                             <p class="fw-normal display-3 text-dark mb-4">in Our Store</p>
-                            <p class="mb-4 text-dark">The generated Lorem Ipsum is therefore always free from repetition injected humour, or non-characteristic words etc.</p>
+                            <p class="mb-4 text-dark">brings together all your study and desk essentials in one place. From backpacks and pouches to organizers, table lamps, and scrapbooks, we focus on simple, minimal designs that make your study space calm and organized. Whether you’re at school, college, or setting up your workspace at home, our products are made to help you stay focused, inspired, and ready to learn.</p>
                             <a href="#" class="banner-btn btn border-2 border-white rounded-pill text-dark py-3 px-5">BUY</a>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <div class="position-relative">
-                            <img src="img/baner-1.png" class="img-fluid w-100 rounded" alt="">
-                            <div class="d-flex align-items-center justify-content-center bg-white rounded-circle position-absolute" style="width: 140px; height: 140px; top: 0; left: 0;">
-                                <h1 style="font-size: 100px;">1</h1>
-                                <div class="d-flex flex-column">
-                                    <span class="h2 mb-0">50$</span>
-                                    <span class="h4 text-muted mb-0">kg</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -268,7 +257,7 @@
                         <div class="col-lg-3">
                             <a href="#">
                                 <h1 class="text-primary mb-0">CampusStore</h1>
-                                <p class="text-secondary mb-0">Fresh products</p>
+                                <p class="text-secondary mb-0">Your study & desk essentials hub</p>
                             </a>
                         </div>
                         <div class="col-lg-6">

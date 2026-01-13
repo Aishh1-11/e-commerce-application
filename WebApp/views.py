@@ -12,14 +12,23 @@ def home(request):
 
 def products(request):
     products = ProductDb.objects.all()
-    return render(request,"products.html",{"products":products})
+    categories = CategoryDb.objects.all()
+
+    for i in categories :
+        i.prdct_count = ProductDb.objects.filter(CategoryName=i.Name).count()
+
+
+    return render(request,"products.html",{"products":products,"categories":categories})
 
 def about(request):
     return render(request,"about.html")
 
 def filtered_products(request,cat_name):
     products = ProductDb.objects.filter(CategoryName__iexact=cat_name.strip())
-    return render(request, "filtered_products.html", {"products": products})
+    categories = CategoryDb.objects.all()
+    for i in categories :
+        i.prdct_count = ProductDb.objects.filter(CategoryName=i.Name).count()
+    return render(request, "filtered_products.html", {"products": products,"categories":categories})
 
 def single_product(request,prdct_id):
     product = ProductDb.objects.get(id=prdct_id)
@@ -64,6 +73,26 @@ def user_login(request):
         return redirect("signin_signup")
 
     return redirect("signin_signup")
+
+def user_logout(request):
+    del request.session["User_name"]
+    return redirect("home")
+
+def contact(request):
+    categories = CategoryDb.objects.all()
+    return render(request,"contact.html",{"categories":categories})
+
+def save_contact(request):
+    if request.method == "POST":
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        sub = request.POST.get("subject")
+        msg = request.POST.get("message")
+
+        obj = ContactDb(Name =name,Email=email,Subject=sub,Message=msg)
+        obj.save()
+
+        return redirect("contact")
 
 
 

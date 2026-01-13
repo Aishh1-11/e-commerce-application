@@ -3,6 +3,7 @@ from AdminApp.models import CategoryDb,ProductDb
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login
+from WebApp.models import *
 
 # Create your views here.
 
@@ -176,8 +177,22 @@ def admin_login(request):
 
         else :
             return redirect(admin_login_page)
+    return redirect(admin_login_page)
 
 def admin_logout(request):
     del request.session['username']
     del request.session['password']
     return redirect(admin_login_page)
+
+def user_contact(request):
+
+    contact = ContactDb.objects.all()
+    return render(request,"user_contact.html",{"contact":contact})
+
+def delete_user_contact(request,contact_id):
+
+    obj = ContactDb.objects.get(id = contact_id)
+    obj.delete()
+
+    return redirect("user_contact")
+

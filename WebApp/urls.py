@@ -12,4 +12,7 @@ urlpatterns = [
     path("signin_signup/",views.signin_signup,name="signin_signup"),
     path("user_registration/",views.user_registration,name="user_registration"),
     path("user_login/",views.user_login,name="user_login"),
+    path("user_logout/",views.user_logout,name="user_logout"),
+    path("contact/",views.contact,name="contact"),
+    path("save_contact/",views.save_contact,name="save_contact"),
 ]

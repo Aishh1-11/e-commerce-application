@@ -23,6 +23,11 @@ urlpatterns = [
     path("admin_login/",views.admin_login,name="admin_login"),
     path("admin_logout/",views.admin_logout,name="admin_logout"),
 
+    path("user_contact/",views.user_contact,name="user_contact"),
+    path("delete_user_contact/<int:contact_id>",views.delete_user_contact,name="delete_user_contact"),
+
+
+
 
 
 
