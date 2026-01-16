@@ -8,19 +8,12 @@ A full-stack e-commerce application for managing and selling desk and study esse
 
 ### User-Facing
 - Browse products by category
-- Search and filter products
-- User account registration and contact info
+- User account registration 
 
 ### Admin-Facing
 - Add, update, and delete products
 - Manage user contact information
 - Dashboard to monitor store activity
-
-### General
-- Media management for product images
-- SQLite database integration for development
-- Clean and organized project structure
-
 ---
 
 ## 🛠 Technologies Used
